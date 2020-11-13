@@ -101,8 +101,8 @@ python test_flaskr.py
 
 ## Trivia API
 ### Getting Started
-Base URL: ```http://localhost:3000/```
-Authentication: This API does not require an Authentication.
+- Base URL: ```http://localhost:3000/```
+- Authentication: This API does not require an Authentication.
 
 ### Errors
 #### JSON formate
@@ -117,7 +117,7 @@ Authentication: This API does not require an Authentication.
   "error": 422,
   "message": "Unprocessable"
 }
+```
 
 ### Resource endpoint library
 
-```
