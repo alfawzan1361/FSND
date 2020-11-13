@@ -236,7 +236,7 @@ The API will return two error types when request fail.
 
 ##### GET /categories/<int:category_id>/questions
 - General: 
-  - Return all matched quesions by category id.
+  - Return all matched questions by category id.
 - Sample: ``` curl http://127.0.0.1:5000/categories/1/questions ```
 ```
 {
@@ -264,19 +264,18 @@ The API will return two error types when request fail.
 
 ##### POST /quizzes
 - General: 
-  - Play quiz game.
-  - Return random quesion.
-- Sample: ``` curl -X POST http://127.0.0.1:5000/quizzes -H "Content-Type: application/json" -d '{"quiz_category":{"type":"Science","id":1},"previous_questions":[20]}' ```
+  - Return random question.
+- Sample: ``` curl -X POST http://127.0.0.1:5000/quizzes -H "Content-Type: application/json" -d '{"quiz_category":{"id":1}}' ```
 ```
 {
   "question":
-  {
-    "answer":"Alexander Fleming",
-    "category":1,
-    "difficulty":3,
-    "id":21,
-    "question":"Who discovered penicillin?"
-  },
+    {
+      "answer":"The Liver",
+      "category":1,
+      "difficulty":4,
+      "id":20,
+      "question":"What is the heaviest organ in the human body?"
+    },
   "success":true
 }
 ```
