@@ -104,25 +104,23 @@ python test_flaskr.py
 - Base URL: ```http://localhost:3000/```
 - Authentication: This API does not require an Authentication.
 
-### Errors
-##### JSON formate
+### Error Handling
 ```
 {
   "success": False,
   "error": 404,
   "message": "Resource not found.!"
-},
-{
-  "success": False,
-  "error": 422,
-  "message": "Unprocessable"
 }
 ```
+The API will return two error types when request fail.
+- 404: Resource not found.!
+- 422: Unprocessable
 
-### Resource endpoint library
-##### Endpoint: GET /categories
-- Return a list of all categories.
-##### Sample request: ``` curl http://127.0.0.1:5000/categories ```
+### Endpoints
+##### GET /categories
+- General: 
+  - Return a list of all categories.
+- Sample: ``` curl http://127.0.0.1:5000/categories ```
 ```
 {
   "categories":
