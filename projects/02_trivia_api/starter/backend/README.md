@@ -99,7 +99,7 @@ psql trivia_test < trivia.psql
 python test_flaskr.py
 ```
 
-## Trivia API
+## Trivia API Reference
 ### Getting Started
 - Base URL: ```http://localhost:5000/```
 - Authentication: This API does not require an Authentication.
