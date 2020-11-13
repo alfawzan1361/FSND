@@ -234,7 +234,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### GET /categories/&lt;int:category_idgt;/questions
+##### GET /categories/&lt;int:category_id&gt;/questions
 - General: 
   - Return all matched questions by category id.
 - Sample: ``` curl http://127.0.0.1:5000/categories/1/questions ```
