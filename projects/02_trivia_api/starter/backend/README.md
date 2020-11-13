@@ -120,21 +120,21 @@ python test_flaskr.py
 ```
 
 ### Resource endpoint library
-#### Endpoint: GET /categories
+##### Endpoint: GET /categories
 - Return a list of all categories.
-#### Sample request: ``` curl http://127.0.0.1:5000/categories ```
+##### Sample request: ``` curl http://127.0.0.1:5000/categories ```
 ```
 {
-"categories":
+  "categories":
   {
-  "1":"Science",
-  "2":"Art",
-  "3":"Geography",
-  "4":"History",
-  "5":"Entertainment",
-  "6":"Sports"
+    "1":"Science",
+    "2":"Art",
+    "3":"Geography",
+    "4":"History",
+    "5":"Entertainment",
+    "6":"Sports"
   },
   "success":true,
   "total_categories":6
-  }
+}
 ```
