@@ -175,7 +175,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### DELETE /questions/<int:question_id>
+##### DELETE /questions/&lt;int:question_id&gt;
 - General: 
   - Delete question by id.
   - Return question id.
@@ -234,7 +234,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### GET /categories/<int:category_id>/questions
+##### GET /categories/&lt;int:category_idgt;/questions
 - General: 
   - Return all matched questions by category id.
 - Sample: ``` curl http://127.0.0.1:5000/categories/1/questions ```
