@@ -118,7 +118,7 @@ The API will return two error types when request fail.
 - 422: Unprocessable
 
 ### Endpoints
-##### GET /categories
+#### GET /categories
 - General: 
   - Return a list of all categories.
 - Sample: ``` curl http://127.0.0.1:5000/categories ```
@@ -138,7 +138,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### GET /questions
+#### GET /questions
 - General: 
   - Return a list of all questions.
 - Sample: ``` curl http://127.0.0.1:5000/questions ```
@@ -175,7 +175,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### DELETE /questions/&lt;int:question_id&gt;
+#### DELETE /questions/&lt;int:question_id&gt;
 - General: 
   - Delete question by id.
   - Return question id.
@@ -187,7 +187,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### POST /questions
+#### POST /questions
 - Create question: 
   - Create a new question.
   - Return all quesions.
@@ -234,7 +234,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### GET /categories/&lt;int:category_id&gt;/questions
+#### GET /categories/&lt;int:category_id&gt;/questions
 - General: 
   - Return all matched questions by category id.
 - Sample: ``` curl http://127.0.0.1:5000/categories/1/questions ```
@@ -262,7 +262,7 @@ The API will return two error types when request fail.
 }
 ```
 
-##### POST /quizzes
+#### POST /quizzes
 - General: 
   - Return random question.
 - Sample: ``` curl -X POST http://127.0.0.1:5000/quizzes -H "Content-Type: application/json" -d '{"quiz_category":{"id":1}}' ```
