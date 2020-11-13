@@ -260,6 +260,7 @@ The API will return two error types when request fail.
   "success":true,
   "total_questions":19
 }
+```
 
 ##### POST /quizzes
 - General: 
