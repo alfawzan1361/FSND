@@ -246,7 +246,7 @@ def create_app(test_config=None):
 	and shown whether they were correct or not. 
 	'''
     @app.route('/quizzes', methods=['POST'])
-    def get_random_quiz_question():
+    def play_quiz():
         body = request.get_json()
 
         previous = body.get('previous_questions')
