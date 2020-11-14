@@ -265,19 +265,17 @@ The API will return two error types when request fail.
 #### POST /quizzes
 - General: 
   - Return random question.
-- Sample: ``` curl -X POST http://127.0.0.1:5000/quizzes -H "Content-Type: application/json" -d '{"quiz_category":{"id":1}}' ```
+- Sample: ``` curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [20, 21], "quiz_category": {"type": "Science", "id": "1"}}' ```
 ```
 {
   "question":
     {
-      "answer":"The Liver",
+      answer":"Blood",
       "category":1,
       "difficulty":4,
-      "id":20,
-      "question":"What is the heaviest organ in the human body?"
+      "id":22,
+      "question":"Hematology is a branch of medicine involving the study of what?"
     },
   "success":true
 }
 ```
-
-
