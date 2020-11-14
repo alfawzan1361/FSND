@@ -15,7 +15,8 @@ class TriviaTestCase(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "trivia"
-        self.database_path = "postgres://{}@{}/{}".format('af', 'localhost:5432', self.database_name)
+        self.database_path = "postgres://{}@{}/{}".format(
+            'af', 'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
         # sample question for testing
@@ -32,7 +33,7 @@ class TriviaTestCase(unittest.TestCase):
             self.db.init_app(self.app)
             # create all tables
             self.db.create_all()
-    
+
     def tearDown(self):
         """Executed after reach test"""
         pass
@@ -43,13 +44,14 @@ class TriviaTestCase(unittest.TestCase):
     """
     ### pagination ###
     # paginated questions test
+
     def test_get_paginated_questions(self):
         # get response
         res = self.client().get('/questions')
         # load data
         data = json.loads(res.data)
 
-        # status message and data retured correctly 
+        # status message and data retured correctly
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertTrue(data['total_questions'])
@@ -63,7 +65,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'Resource not found.!')
-    
+
     ### get ###
      # get catogeries test
     def test_get_categories(self):
@@ -84,23 +86,23 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(len(data['questions']))
         self.assertTrue(data['total_questions'])
-    
+
     ### delete ###
     # delete question test
     def test_delete_question(self):
-       question = Question.query.order_by(Question.id.desc()).first()
-       question_id = question.id
+        question = Question.query.order_by(Question.id.desc()).first()
+        question_id = question.id
 
-       res = self.client().delete('/questions/{}'.format(question_id))
-       data = json.loads(res.data)
+        res = self.client().delete('/questions/{}'.format(question_id))
+        data = json.loads(res.data)
 
-       question = Question.query.get(question_id)
+        question = Question.query.get(question_id)
 
-       self.assertEqual(res.status_code, 200)
-       self.assertEqual(data['success'], True)
-       self.assertEqual(data['deleted'], question_id)
-       self.assertIsNone(question)
-    
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertEqual(data['deleted'], question_id)
+        self.assertIsNone(question)
+
     # delete question 422 test
     def test_422_delete_question(self):
         question_id = 500
@@ -123,7 +125,7 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-    
+
     # craete question 422 test
     def test_422_create_question(self):
         # create new question without data
@@ -173,9 +175,8 @@ class TriviaTestCase(unittest.TestCase):
     ### quiz ###
     # play quiz tset
     def test_play_quiz(self):
-        category = Category.query.first()
-        res = self.client().post(
-            '/quizzes', json={"quiz_category": category.format()})
+        res = self.client().post('/quizzes',
+                                 json={'previous_questions': [20, 21], 'quiz_category': {'type': 'Science', 'id': '1'}})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -184,7 +185,7 @@ class TriviaTestCase(unittest.TestCase):
 
     # play quiz 422 test
     def test_422_play_quiz(self):
-        res = self.client().post('/quizzes')
+        res = self.client().post('/quizzes', json={})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 422)

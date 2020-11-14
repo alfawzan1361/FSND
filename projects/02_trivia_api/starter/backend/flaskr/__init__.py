@@ -246,23 +246,32 @@ def create_app(test_config=None):
 	and shown whether they were correct or not. 
 	'''
     @app.route('/quizzes', methods=['POST'])
-    def play_quiz():
-        # loading request body
+    def get_random_quiz_question():
         body = request.get_json()
 
-        if body == None or 'quiz_category' not in body.keys():
-            return abort(422)
+        previous = body.get('previous_questions')
+        category = body.get('quiz_category')
 
-        previous_questions = []
-        if 'previous_questions' in body.keys():
-            previous_questions = body['previous_questions']
-            # query
-        question = Question.query.filter(
-            Question.category == body['quiz_category']['id'], Question.id.notin_(previous_questions)).first()
+        if ((category is None) or (previous is None)):
+            abort(422)
+
+        # if all
+        if (category['id'] == 0):
+            questions = Question.query.all()
+        # else by catogery id
+        else:
+            questions = Question.query.filter_by(category=category['id']).all()
+
+        # random question
+        def get_random_question():
+            return questions[random.randrange(0, len(questions), 1)]
+
+        question = get_random_question()
+
         # view
         return jsonify({
-            "success": True,
-            "question": question.format() if question != None else None
+            'success': True,
+            'question': question.format()
         })
 
     '''
